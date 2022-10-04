@@ -11,11 +11,7 @@ extension FilePath {
     /// Creates a `Foundation.URL` from this `FilePath`.
     public var url: URL {
 #if canImport(Darwin) && swift(>=5.7)
-        if #available(macOS 13.0, *) {
-            return .init(filePath: self.string)
-        } else {
-            return .init(fileURLWithPath: self.string)
-        }
+        return .init(fileURLWithPath: self.string)
 #else
         .init(fileURLWithPath: self.string)
 #endif
